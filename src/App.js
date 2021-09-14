@@ -5,12 +5,22 @@ import Modal from './components/Modal';
 
 function App() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [modalVariant, setModalVariant] = useState("dropIn");
+
+  const handleVariant = (e) => setModalVariant(e.target.value);
 
   const close = () => setModalOpen(false);
   const open = () => setModalOpen(true);
 
   return (
     <div>
+      <motion.select className="input" onChange={handleVariant}>
+        <option value="dropIn">🪂 Drop in</option>
+        <option value="flip">🛹 Flip</option>
+        <option value="newspaper">🗞 Newspaper</option>
+        <option value="badSuspension">🔩 Bad Suspension</option>
+        <option value="gifYouUp">🎸 GIF you up</option>
+      </motion.select>
       <motion.button
         whileHover={{ scale: 1.1 }}
         whileTap={{ scale: 0.9 }}
@@ -20,7 +30,7 @@ function App() {
         Launch modal
       </motion.button>
       <AnimatePresence initial={false} exitBeforeEnter={true}>
-        {modalOpen && <Modal modalOpen={modalOpen} handleClose={close} />}
+        {modalOpen && <Modal variant={modalVariant} modalOpen={modalOpen} handleClose={close} />}
       </AnimatePresence>
     </div>
   );
