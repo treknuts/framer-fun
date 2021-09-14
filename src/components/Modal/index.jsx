@@ -24,7 +24,7 @@ const dropIn = {
 
 const flip = {
   hidden: {
-    transform: "scale(0) rotateX(-360deg)",
+    transform: "scale(0) rotateX(-180deg)",
     opacity: 0,
     transition: {
       delay: 0.3,
@@ -38,7 +38,7 @@ const flip = {
     },
   },
   exit: {
-    transform: "scale(0) rotateX(360deg)",
+    transform: "scale(0) rotateX(180deg)",
     opacity: 0,
     transition: {
       duration: 0.5,
@@ -48,7 +48,7 @@ const flip = {
 
 const newspaper = {
   hidden: {
-    transform: "scale(0) rotate(720deg)",
+    transform: "scale(0) rotate(360deg)",
     opacity: 0,
     transition: {
       delay: 0.3,
@@ -77,7 +77,7 @@ const badSuspension = {
     transform: "scale(0) rotateX(-360deg)",
   },
   visible: {
-    y: "-25vh",
+    y: 0,
     opacity: 1,
     transition: {
       duration: 0.2,

@@ -13,8 +13,10 @@ function App() {
   const open = () => setModalOpen(true);
 
   return (
-    <div>
-      <h1>Epic Framer Motion Modal Animations</h1>
+    <>
+      <motion.main>
+      <Header />
+      <SubHeader text="Animated Modals" />
       <motion.select className="input" onChange={handleVariant}>
         <option value="dropIn">🪂 Drop in</option>
         <option value="flip">🛹 Flip</option>
@@ -30,11 +32,36 @@ function App() {
       >
         Launch modal
       </motion.button>
-      <AnimatePresence initial={false} exitBeforeEnter={true}>
+      <ModalContainer>
         {modalOpen && <Modal variant={modalVariant} modalOpen={modalOpen} handleClose={close} />}
-      </AnimatePresence>
-    </div>
+      </ModalContainer>
+      </motion.main>
+    </>
   );
 }
+
+const Header = () => (
+  <motion.h1 className="pink">
+    Framer Motion
+    <span className="light-blue"> ⚛️ React</span>
+  </motion.h1>
+);
+
+const SubHeader = ({ text }) => <motion.h2 className="sub-header">{text}</motion.h2>;
+
+const ModalContainer = ({ children, label }) => (
+  // Enables the animation of components that have been removed from the tree
+  <AnimatePresence
+    // Disable any initial animations on children that
+    // are present when the component is first rendered
+    initial={false}
+    // Only render one component at a time.
+    // The exiting component will finish its exit
+    // animation before entering component is rendered
+    exitBeforeEnter={true}
+  >
+    {children}
+  </AnimatePresence>
+);
 
 export default App;
