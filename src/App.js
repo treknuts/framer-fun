@@ -14,6 +14,7 @@ function App() {
 
   return (
     <div>
+      <h1>Epic Framer Motion Modal Animations</h1>
       <motion.select className="input" onChange={handleVariant}>
         <option value="dropIn">🪂 Drop in</option>
         <option value="flip">🛹 Flip</option>
